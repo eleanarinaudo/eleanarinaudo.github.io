@@ -3,7 +3,7 @@
 
 
 
-![Texto alternativo](img/index.png)
+![index](img/index.gif)
 
 
 -------
