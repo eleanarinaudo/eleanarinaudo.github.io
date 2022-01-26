@@ -1,1 +1,41 @@
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+:root {
+  --mainColor: #010409;
+  --secondaryColor: #0a0c10;
+
+
+  --mainText: #69f0ae;
+  --secondaryText: #fafafa;
+
+}
+
+
+html, body{
+  background-color: var(--mainColor);
+}
+
+body *{
+	transition: 0.3s;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  font-family: 'Lekton', sans-serif;
+}
+
+.bg-shared{
+  background-color: var(--secondaryColor);
+  font-family: 'Lekton', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+p{
+  color: var(--secondaryText);
+}
+
+h1{
+  font-family: 'Roboto', sans-serif;
+  color: var(--mainText);
+}
+
