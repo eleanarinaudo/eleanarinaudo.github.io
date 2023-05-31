@@ -9,7 +9,7 @@ import { AngularTypewriterEffectModule } from 'angular-typewriter-effect';
 export class HomeComponent implements OnInit {
 
   title = 'angularTests';
-  list = ['Lic. en Cs. de la Computación en proceso ...', 'Tec. en CS e IA en proceso ...']
+  list = ['Jr Data Engineer ...', 'Data Science and AI Student ...']
   cursor =  true;
   pauseFor = 3000;
   delay= 75;
