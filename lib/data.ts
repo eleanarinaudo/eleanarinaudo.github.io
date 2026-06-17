@@ -3,17 +3,82 @@ export const profile = {
   role: "AI/ML Engineer",
   location: "Córdoba, Argentina",
   tagline:
-    "I build LLM-powered systems — MCP servers, conversational agents, and the data pipelines behind them.",
+    "I build the full data lifecycle behind LLM products — from large-scale scraping and ML enrichment to production MCP servers and agents.",
   email: "eleanarinaudo@gmail.com",
   github: "https://github.com/eleanarinaudo",
   linkedin: "https://www.linkedin.com/in/eleana-rinaudo/",
-  resume:
-    "https://github.com/eleanarinaudo/CV_EleanaRinaudo/raw/main/CV_Eleana_Rinaudo.pdf",
+  resume: "/CV_Eleana_Rinaudo.docx",
+  avatar: "/profile.png",
 };
 
 export const about = [
-  "I'm a data person from Córdoba, Argentina, currently working as an AI/ML Engineer at Fabric Data. I started out writing web scrapers and ETL pipelines, and over time moved into ML tooling and — more recently — LLM systems, building a Model Context Protocol (MCP) server that connects assistants like Claude and ChatGPT to large analytical datasets.",
-  "I enjoy the messy data-to-product journey: turning raw, unreliable sources into something an assistant can answer questions over in plain language. Always learning — currently also studying Computer Science (UNC) and Data Science & AI.",
+  "AI/ML Engineer who built the full data lifecycle of a media & entertainment data platform — from large-scale web-scraping ingestion, through ML enrichment, to a production LLM access layer (Model Context Protocol).",
+  "Strong end-to-end: Python backends, agentic orchestration (LangChain / LangGraph), AWS infrastructure (ECS / Terraform) and React frontends. 5+ years shipping data products at scale, currently at Fabric Data.",
+];
+
+export type Stream = { title: string; period: string; points: string[] };
+export type Role = {
+  company: string;
+  note?: string;
+  title: string;
+  period: string;
+  summary?: string;
+  streams: Stream[];
+};
+
+export const experience: Role[] = [
+  {
+    company: "Fabric Data",
+    note: "formerly BB Media",
+    title: "AI/ML Engineer",
+    period: "2022 — Present",
+    summary:
+      "Progressed from Data Engineer to AI/ML Engineer, building the full data lifecycle of a media & entertainment data platform.",
+    streams: [
+      {
+        title: "LLM access layer — Origin Insights MCP Server",
+        period: "2026 — Present",
+        points: [
+          "Architected and built, as sole primary author, a production MCP server exposing ~108 tools across 13 domains that connects LLM clients (Claude, ChatGPT) to AWS Athena, using a hexagonal / ports-and-adapters architecture.",
+          "Built a React report engine (36+ visualization templates, interactive charts, dark/light theming) for server-generated analytics reports.",
+          "Implemented OAuth 2.0 (AWS Cognito + Google SSO, RS256 JWT), tiered rate limiting and an Athena circuit breaker; added a REST / OpenAPI 3.1 adapter for ChatGPT.",
+          "Owned IaC & CI/CD: ECS Fargate + ALB + Route 53 via Terraform; GitHub Actions pipeline (test gate → stage → prod). Shipped to production.",
+        ],
+      },
+      {
+        title: "Conversational AI agents",
+        period: "2025 — 2026",
+        points: [
+          "Built a LangGraph multi-step agent with async tools and ThreadPoolExecutor query parallelization; led a refactor that cut the core router by ~1,400 lines and removed 25 classes.",
+          "Developed a LangChain bilingual (ES/EN) assistant over the streaming catalog, with tools for availability, pricing, demand signals and metadata.",
+        ],
+      },
+      {
+        title: "Applied ML & data tooling",
+        period: "2024 — 2025",
+        points: [
+          'Built a poster OCR pipeline detecting platform branding and "original content" markers.',
+          "Developed semantic genre mapping with multilingual sentence embeddings, a cross-platform title-translation pipeline, language detection (fastText) and platform-affinity analysis.",
+        ],
+      },
+      {
+        title: "Data ingestion — streaming-platform scrapers",
+        period: "2022 — 2024",
+        points: [
+          "Built and maintained 30+ streaming-platform scrapers in a large shared Python monorepo (~825 commits over 2.5 years), extracting catalog metadata across global services (Britbox, DAZN, iQIYI, HBO Go Asia, Lionsgate+, and many more).",
+          "Implemented geo-validation by country, payload normalization and series/season/episode resolution; continuously hardened scrapers against upstream changes.",
+        ],
+      },
+    ],
+  },
+  {
+    company: "ATILA",
+    title: "FullStack Trainee",
+    period: "Mar 2021 — Aug 2021",
+    summary:
+      "Internship (PIL Program) as a .NET FullStack developer, building and maintaining web applications.",
+    streams: [],
+  },
 ];
 
 export type Project = {
@@ -31,16 +96,16 @@ export const projects: Project[] = [
     status: "Production",
     private: true,
     description:
-      "A Model Context Protocol server connecting Claude and other LLM applications to AWS Athena datasets for the media & entertainment industry. Hexagonal architecture, ~100 tools, OAuth, and server-side React report rendering.",
+      "Sole primary author of a production MCP server — ~108 tools across 13 domains — connecting Claude and ChatGPT to AWS Athena, with a React report engine, OAuth 2.0 and a Terraform-managed ECS deployment.",
     stack: ["Python", "MCP", "AWS Athena", "ECS", "Terraform", "React"],
   },
   {
-    title: "Streaming Data Ingestion",
-    status: "Work",
-    private: true,
+    title: "Line 137 — Helpline call analysis",
+    status: "Data science",
     description:
-      "Building and maintaining a fleet of 30+ scrapers and ETL pipelines that keep streaming-catalog data flowing reliably into the analytics layer that powers the products above.",
-    stack: ["Python", "ETL", "AWS", "Athena"],
+      "Time-series analysis of family-violence helpline calls: quantified relevant variables and built a model to predict daily call behavior, surfacing trends and periodic patterns.",
+    stack: ["Python", "Pandas", "Time series", "Jupyter"],
+    link: "https://github.com/eleanarinaudo/Linea-137-Diplo2022",
   },
   {
     title: "Web Scraping — Starz",
@@ -55,18 +120,53 @@ export const projects: Project[] = [
 export const skills: { group: string; items: string[] }[] = [
   {
     group: "AI / LLM",
-    items: ["MCP", "Conversational agents", "LangChain / LangGraph", "Prompt engineering"],
+    items: [
+      "MCP",
+      "LangChain",
+      "LangGraph",
+      "Agentic workflows",
+      "Prompt engineering",
+      "Embeddings / RAG",
+      "OCR",
+    ],
+  },
+  { group: "Languages", items: ["Python", "TypeScript", "SQL (Presto/Trino)"] },
+  {
+    group: "Data & Scraping",
+    items: ["Large-scale web scraping", "Data normalization", "Geo-validation", "ETL"],
   },
   {
-    group: "Languages",
-    items: ["Python", "TypeScript", "SQL"],
+    group: "Cloud & Infra",
+    items: ["AWS (Athena, ECS, Cognito, S3)", "Terraform", "Docker", "GitHub Actions"],
   },
   {
-    group: "Data & Cloud",
-    items: ["AWS (Athena, ECS, Terraform)", "Presto / Trino", "Pandas", "NumPy", "Docker"],
+    group: "Backend",
+    items: ["Starlette / Uvicorn (ASGI)", "Pydantic", "REST / OpenAPI", "pytest"],
+  },
+  { group: "Frontend", items: ["React", "Next.js", "Tailwind CSS", "Recharts"] },
+];
+
+export type Study = { title: string; org: string; period: string };
+
+export const education: Study[] = [
+  {
+    title: "B.Sc. in Computer Science",
+    org: "National University of Córdoba (FAMAF)",
+    period: "In progress",
   },
   {
-    group: "Web",
-    items: ["React", "Next.js", "FastAPI / Starlette", "TailwindCSS"],
+    title: "Higher Technical Degree in Data Science & AI",
+    org: "Instituto Superior Politécnico Córdoba",
+    period: "In progress",
+  },
+];
+
+export const training: Study[] = [
+  { title: "Diploma in Data Science & Machine Learning", org: "FAMAF – UNC", period: "2022" },
+  { title: "Machine Learning & Image Processing", org: "UNC", period: "2022" },
+  {
+    title: "FullStack Development (Angular/.NET · Python/Django)",
+    org: "PIL · Educación IT",
+    period: "2020 – 2021",
   },
 ];

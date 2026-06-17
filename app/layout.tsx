@@ -28,12 +28,14 @@ export const metadata: Metadata = {
     description: profile.tagline,
     url: "https://eleanarinaudo.github.io",
     siteName: profile.name,
+    images: [{ url: "/profile.png", width: 600, height: 600, alt: profile.name }],
     type: "website",
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: `${profile.name} — ${profile.role}`,
     description: profile.tagline,
+    images: ["/profile.png"],
   },
 };
 

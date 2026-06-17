@@ -30,9 +30,14 @@ const config: Config = {
           "0%": { opacity: "0", transform: "translateY(12px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
+        glow: {
+          "0%, 100%": { opacity: "0.35", transform: "translateY(0) scale(1)" },
+          "50%": { opacity: "0.6", transform: "translateY(20px) scale(1.08)" },
+        },
       },
       animation: {
         "fade-up": "fade-up 0.6s ease-out both",
+        glow: "glow 9s ease-in-out infinite",
       },
     },
   },
