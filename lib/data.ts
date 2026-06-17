@@ -45,7 +45,7 @@ export const experience: Role[] = [
         title: "LLM access layer — Origin Insights MCP Server",
         period: "2025 — Present",
         points: [
-          "Architected and built, as sole author, a production MCP server (108 tools across 13 domains) that lets LLM clients query AWS Athena in natural language — replacing hand-written SQL for internal teams and external clients, live via Claude (ChatGPT next), on a clean hexagonal / ports-and-adapters architecture.",
+          "Architected and built, as sole author, a production MCP server (108 tools across 13 domains) that lets LLM clients query AWS Athena in natural language — replacing manual SQL with a conversational interface, on a clean hexagonal / ports-and-adapters architecture.",
           "Built a React report engine (36+ visualization templates, interactive charts, dark/light theming) for server-generated analytics reports.",
           "Implemented OAuth 2.0 (AWS Cognito + Google SSO, RS256 JWT), tiered rate limiting and an Athena circuit breaker; added a REST / OpenAPI 3.1 adapter for ChatGPT.",
           "Owned IaC & CI/CD: ECS Fargate + ALB + Route 53 via Terraform; GitHub Actions pipeline (test gate → stage → prod). Shipped to production.",
@@ -71,7 +71,7 @@ export const experience: Role[] = [
         title: "Data ingestion — streaming-platform scrapers",
         period: "2022 — 2024",
         points: [
-          "Built and maintained 30+ streaming-platform scrapers in a large shared Python monorepo (~825 commits over 2.5 years) — feeding the unified, multi-market catalog that powers the platform's availability and demand data. Coverage spans global services (Britbox, DAZN, iQIYI, HBO Go Asia, Lionsgate+, and many more).",
+          "Built and maintained 30+ streaming-platform scrapers in a large shared Python monorepo (~825 commits over 2.5 years) — feeding the unified, multi-market catalog that powers the platform's availability and demand data, spanning global streaming services across many regions.",
           "Implemented geo-validation by country, payload normalization and series/season/episode resolution; continuously hardened scrapers against upstream changes.",
         ],
       },
@@ -102,7 +102,7 @@ export const projects: Project[] = [
     status: "Production",
     private: true,
     description:
-      "Sole author of a production MCP server — 108 tools across 13 domains — that replaces hand-written SQL with natural-language access to AWS Athena for internal teams and external clients (live via Claude, ChatGPT next). React report engine, OAuth 2.0 and a Terraform-managed ECS deployment.",
+      "Sole author of a production MCP server — 108 tools across 13 domains — that replaces manual SQL with natural-language access to AWS Athena. React report engine, OAuth 2.0 and a Terraform-managed ECS deployment.",
     stack: ["Python", "MCP", "AWS Athena", "ECS", "Terraform", "React"],
   },
   {
