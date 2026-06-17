@@ -18,8 +18,8 @@ export const stats: { value: string; label: string }[] = [
 ];
 
 export const about = [
-  "AI/ML Engineer at a media & entertainment data platform — owning ingestion (large-scale web scraping), ML enrichment, and a production LLM access layer (Model Context Protocol).",
-  "Comfortable end-to-end: Python backends, agentic orchestration (LangChain / LangGraph), AWS infrastructure (ECS / Terraform) and React frontends — 5+ years shipping data products at scale, currently at Fabric Data.",
+  "I'm an AI/ML Engineer at a media & entertainment data platform, where I own ingestion (large-scale web scraping), ML enrichment, and a production LLM access layer (Model Context Protocol).",
+  "I work end-to-end: Python backends, agentic orchestration (LangChain / LangGraph), AWS infrastructure (ECS / Terraform) and React frontends. 5+ years shipping data products at scale, currently at Fabric Data.",
 ];
 
 export type Stream = { title: string; period: string; points: string[] };
