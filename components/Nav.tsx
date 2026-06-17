@@ -13,7 +13,10 @@ const links = [
 export default function Nav() {
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-paper/85 backdrop-blur-md backdrop-saturate-150 transition-colors">
-      <nav className="relative mx-auto flex max-w-shell items-center justify-between gap-5 px-6 py-4 sm:px-11">
+      <nav
+        aria-label="Primary"
+        className="relative mx-auto flex max-w-shell items-center justify-between gap-5 px-6 py-4 sm:px-11"
+      >
         <a href="#top" className="flex items-center gap-2 text-ink no-underline">
           <span className="h-[9px] w-[9px] rounded-full bg-shu" />
           <span className="text-sm font-bold tracking-[0.14em]">ER.</span>

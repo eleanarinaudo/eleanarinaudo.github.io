@@ -3,16 +3,18 @@ import { Zen_Kaku_Gothic_New, Zen_Old_Mincho } from "next/font/google";
 import { profile } from "@/lib/data";
 import "./globals.css";
 
+// Zen Kaku Gothic New ships 300/400/500/700/900 (no 600) — load only what we
+// use; font-semibold (600) resolves to the real 700 face, not a synthetic bold.
 const zenKaku = Zen_Kaku_Gothic_New({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "700", "900"],
+  weight: ["400", "500", "700"],
   variable: "--font-zen-kaku",
   display: "swap",
 });
 
 const zenMincho = Zen_Old_Mincho({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500"],
   variable: "--font-zen-mincho",
   display: "swap",
 });
@@ -99,8 +101,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personLd) }}
         />
+        {/* Without JS the IntersectionObserver never fires — keep content visible. */}
+        <noscript
+          dangerouslySetInnerHTML={{
+            __html: "<style>.reveal{opacity:1!important;transform:none!important}</style>",
+          }}
+        />
       </head>
-      <body className="font-sans">{children}</body>
+      <body className="font-sans">
+        <a
+          href="#main"
+          className="fixed left-4 -top-20 z-[60] rounded-[3px] border border-lineStrong bg-paper px-4 py-2 text-sm font-medium text-ink transition-[top] focus:top-4"
+        >
+          Skip to content
+        </a>
+        {children}
+      </body>
     </html>
   );
 }

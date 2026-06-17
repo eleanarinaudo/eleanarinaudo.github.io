@@ -8,7 +8,6 @@ export const profile = {
   github: "https://github.com/eleanarinaudo",
   linkedin: "https://www.linkedin.com/in/eleana-rinaudo/",
   resume: "/CV_Eleana_Rinaudo.docx",
-  avatar: "/profile.png",
   status: "AI/ML Engineer @ Fabric Data",
 };
 

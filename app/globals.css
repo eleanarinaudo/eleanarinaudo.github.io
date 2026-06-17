@@ -17,6 +17,10 @@
   --line-strong: 205 196 178;
   --shu: 42 38 32; /* sumi — near-ink in light mode */
   --on-shu: 250 248 243; /* text/icon color on a filled accent surface */
+  /* Motion scale */
+  --ease-enter: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 0.18s;
+  --dur-base: 0.5s;
 }
 
 [data-theme="dark"] {
@@ -85,7 +89,7 @@ body {
   .btn-primary {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     padding: 15px 26px;
     border-radius: 3px;
     font-size: 13.5px;
@@ -95,19 +99,28 @@ body {
     background: rgb(var(--shu));
     color: rgb(var(--on-shu));
     border: 1px solid rgb(var(--shu));
-    transition: all 0.2s ease;
+    transition:
+      transform var(--dur-fast) var(--ease-enter),
+      box-shadow var(--dur-fast) ease;
   }
   .btn-primary:hover {
-    gap: 14px;
     transform: translateY(-1px);
     box-shadow: 0 10px 24px -8px rgb(0 0 0 / 0.35);
+  }
+  /* Arrow slides via transform (compositor-only) instead of animating gap. */
+  .btn-primary .arrow {
+    display: inline-block;
+    transition: transform var(--dur-fast) var(--ease-enter);
+  }
+  .btn-primary:hover .arrow {
+    transform: translateX(4px);
   }
   /* On the filled sumi surface, the global shu outline disappears — use paper. */
   .btn-primary:focus-visible {
     outline-color: rgb(var(--on-shu));
   }
 
-  /* Outlined CTA */
+  /* Outlined CTA — border is the control's boundary, so keep it >= 3:1 (WCAG 1.4.11). */
   .btn-ghost {
     display: inline-flex;
     align-items: center;
@@ -119,8 +132,10 @@ body {
     letter-spacing: 0.03em;
     text-decoration: none;
     color: rgb(var(--ink));
-    border: 1px solid rgb(var(--line-strong));
-    transition: all 0.2s ease;
+    border: 1px solid rgb(var(--ink-faint));
+    transition:
+      color 0.2s ease,
+      border-color 0.2s ease;
   }
   .btn-ghost:hover {
     border-color: rgb(var(--ink));
@@ -134,7 +149,9 @@ body {
     font-size: 12.5px;
     color: rgb(var(--ink-soft));
     border: 1px solid rgb(var(--line-strong));
-    transition: all 0.2s ease;
+    transition:
+      color 0.2s ease,
+      border-color 0.2s ease;
   }
   .chip:hover {
     border-color: rgb(var(--ink));
@@ -151,6 +168,14 @@ body {
     color: rgb(var(--ink-soft));
     background: rgb(var(--paper-2));
   }
+}
+
+/* While the theme is switching, freeze all transitions so the page snaps to
+   the new palette in one frame instead of each element cross-fading. */
+[data-theme-switching] *,
+[data-theme-switching] *::before,
+[data-theme-switching] *::after {
+  transition: none !important;
 }
 
 @media (prefers-reduced-motion: reduce) {

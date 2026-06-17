@@ -71,7 +71,7 @@ export default function Hero() {
             style={{ animationDelay: "440ms" }}
           >
             <a href="#work" className="btn-primary">
-              View my work <span className="text-[15px]">→</span>
+              View my work <span className="arrow text-[15px]">→</span>
             </a>
             <a href={profile.resume} className="btn-ghost" target="_blank" rel="noopener">
               Résumé
