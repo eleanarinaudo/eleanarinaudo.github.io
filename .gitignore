@@ -14,7 +14,7 @@
 .DS_Store
 Thumbs.db
 *.pem
-*.bak
+*.bak*
 
 # debug
 npm-debug.log*

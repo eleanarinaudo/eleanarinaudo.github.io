@@ -12,14 +12,14 @@ export const profile = {
 };
 
 export const stats: { value: string; label: string }[] = [
-  { value: "5+", label: "yrs shipping data products" },
-  { value: "108", label: "MCP tools built" },
+  { value: "4+", label: "yrs in data & AI" },
+  { value: "13", label: "MCP domains" },
   { value: "30+", label: "platform scrapers" },
 ];
 
 export const about = [
   "I'm an AI/ML Engineer at a media & entertainment data platform, where I own ingestion (large-scale web scraping), ML enrichment, and a production LLM access layer (Model Context Protocol).",
-  "I work end-to-end: Python backends, agentic orchestration (LangChain / LangGraph), AWS infrastructure (ECS / Terraform) and React frontends. 5+ years shipping data products at scale, currently at Fabric Data.",
+  "I work end-to-end: Python backends, agentic orchestration (LangChain / LangGraph), AWS infrastructure (ECS / Terraform) and React frontends — currently at Fabric Data.",
 ];
 
 export type Stream = { title: string; period: string; points: string[] };
@@ -45,7 +45,7 @@ export const experience: Role[] = [
         title: "LLM access layer — Origin Insights MCP Server",
         period: "2025 — Present",
         points: [
-          "Architected and built, as sole author, a production MCP server (108 tools across 13 domains) that lets LLM clients query AWS Athena in natural language — replacing manual SQL with a conversational interface, on a clean hexagonal / ports-and-adapters architecture.",
+          "Architected and built, as sole author, a production MCP server spanning 13 domains that lets LLM clients query AWS Athena in natural language — replacing manual SQL with a conversational interface, on a clean hexagonal / ports-and-adapters architecture.",
           "Built a React report engine (36+ visualization templates, interactive charts, dark/light theming) for server-generated analytics reports.",
           "Implemented OAuth 2.0 (AWS Cognito + Google SSO, RS256 JWT), tiered rate limiting and an Athena circuit breaker; added a REST / OpenAPI 3.1 adapter for ChatGPT.",
           "Owned IaC & CI/CD: ECS Fargate + ALB + Route 53 via Terraform; GitHub Actions pipeline (test gate → stage → prod). Shipped to production.",
@@ -102,7 +102,7 @@ export const projects: Project[] = [
     status: "Production",
     private: true,
     description:
-      "Sole author of a production MCP server — 108 tools across 13 domains — that replaces manual SQL with natural-language access to AWS Athena. React report engine, OAuth 2.0 and a Terraform-managed ECS deployment.",
+      "Sole author of a production MCP server spanning 13 domains that replaces manual SQL with natural-language access to AWS Athena. React report engine, OAuth 2.0 and a Terraform-managed ECS deployment.",
     stack: ["Python", "MCP", "AWS Athena", "ECS", "Terraform", "React"],
   },
   {
