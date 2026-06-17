@@ -57,10 +57,10 @@ function RowBody({ p, num }: { p: Project; num: string }) {
 
 export default function Projects() {
   const rowClass =
-    "flex flex-wrap gap-4 border-b border-line px-0 py-[clamp(28px,4vw,40px)] transition-colors hover:bg-card sm:gap-[clamp(16px,4vw,44px)]";
+    "flex flex-wrap gap-4 border-b border-line px-0 py-[clamp(28px,4vw,40px)] transition-colors hover:bg-paper2 sm:gap-[clamp(16px,4vw,44px)]";
   return (
     <Section id="work">
-      <SectionHeading num="04" label="Selected work" className="mb-[clamp(20px,3vw,32px)]" />
+      <SectionHeading num="04" label="Work" className="mb-[clamp(20px,3vw,32px)]" />
       <div className="border-t border-line">
         {projects.map((p, i) => {
           const num = String(i + 1).padStart(2, "0");

@@ -36,7 +36,7 @@ export default function Education() {
   return (
     <Section id="education" tone="paper2">
       <SectionHeading num="05" label="Education" className="mb-[clamp(36px,5vw,56px)]" />
-      <div className="grid gap-[clamp(32px,5vw,64px)] sm:grid-cols-2">
+      <div className="grid gap-[clamp(32px,5vw,64px)] md:grid-cols-2">
         <div>
           <h3 className="m-0 mb-2 text-[11px] font-bold uppercase tracking-[0.22em] text-inkFaint">
             Degrees

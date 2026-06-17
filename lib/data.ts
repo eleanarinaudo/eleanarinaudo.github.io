@@ -14,13 +14,13 @@ export const profile = {
 
 export const stats: { value: string; label: string }[] = [
   { value: "5+", label: "yrs shipping data products" },
-  { value: "~108", label: "MCP tools built" },
+  { value: "108", label: "MCP tools built" },
   { value: "30+", label: "platform scrapers" },
 ];
 
 export const about = [
-  "AI/ML Engineer who built the full data lifecycle of a media & entertainment data platform — from large-scale web-scraping ingestion, through ML enrichment, to a production LLM access layer (Model Context Protocol).",
-  "Strong end-to-end: Python backends, agentic orchestration (LangChain / LangGraph), AWS infrastructure (ECS / Terraform) and React frontends. 5+ years shipping data products at scale, currently at Fabric Data.",
+  "AI/ML Engineer at a media & entertainment data platform — owning ingestion (large-scale web scraping), ML enrichment, and a production LLM access layer (Model Context Protocol).",
+  "Comfortable end-to-end: Python backends, agentic orchestration (LangChain / LangGraph), AWS infrastructure (ECS / Terraform) and React frontends — 5+ years shipping data products at scale, currently at Fabric Data.",
 ];
 
 export type Stream = { title: string; period: string; points: string[] };
@@ -44,9 +44,9 @@ export const experience: Role[] = [
     streams: [
       {
         title: "LLM access layer — Origin Insights MCP Server",
-        period: "2026 — Present",
+        period: "2025 — Present",
         points: [
-          "Architected and built, as sole primary author, a production MCP server exposing ~108 tools across 13 domains that connects LLM clients (Claude, ChatGPT) to AWS Athena, using a hexagonal / ports-and-adapters architecture.",
+          "Architected and built, as sole author, a production MCP server (108 tools across 13 domains) that lets LLM clients like Claude and ChatGPT query AWS Athena in natural language, on a clean hexagonal / ports-and-adapters architecture.",
           "Built a React report engine (36+ visualization templates, interactive charts, dark/light theming) for server-generated analytics reports.",
           "Implemented OAuth 2.0 (AWS Cognito + Google SSO, RS256 JWT), tiered rate limiting and an Athena circuit breaker; added a REST / OpenAPI 3.1 adapter for ChatGPT.",
           "Owned IaC & CI/CD: ECS Fargate + ALB + Route 53 via Terraform; GitHub Actions pipeline (test gate → stage → prod). Shipped to production.",
@@ -54,7 +54,7 @@ export const experience: Role[] = [
       },
       {
         title: "Conversational AI agents",
-        period: "2025 — 2026",
+        period: "2024 — 2025",
         points: [
           "Built a LangGraph multi-step agent with async tools and ThreadPoolExecutor query parallelization; led a refactor that cut the core router by ~1,400 lines and removed 25 classes.",
           "Developed a LangChain bilingual (ES/EN) assistant over the streaming catalog, with tools for availability, pricing, demand signals and metadata.",
@@ -80,10 +80,10 @@ export const experience: Role[] = [
   },
   {
     company: "ATILA",
-    title: "FullStack Trainee",
+    title: "Full-Stack Trainee",
     period: "Mar 2021 — Aug 2021",
     summary:
-      "Internship (PIL Program) as a .NET FullStack developer, building and maintaining web applications.",
+      "Internship (PIL Program): built and maintained .NET full-stack web applications.",
     streams: [],
   },
 ];
@@ -103,7 +103,7 @@ export const projects: Project[] = [
     status: "Production",
     private: true,
     description:
-      "Sole primary author of a production MCP server — ~108 tools across 13 domains — connecting Claude and ChatGPT to AWS Athena, with a React report engine, OAuth 2.0 and a Terraform-managed ECS deployment.",
+      "Sole author of a production MCP server — 108 tools across 13 domains — connecting Claude and ChatGPT to AWS Athena, with a React report engine, OAuth 2.0 and a Terraform-managed ECS deployment.",
     stack: ["Python", "MCP", "AWS Athena", "ECS", "Terraform", "React"],
   },
   {
@@ -172,7 +172,7 @@ export const training: Study[] = [
   { title: "Diploma in Data Science & Machine Learning", org: "FAMAF – UNC", period: "2022" },
   { title: "Machine Learning & Image Processing", org: "UNC", period: "2022" },
   {
-    title: "FullStack Development (Angular/.NET · Python/Django)",
+    title: "Full-Stack Development (Angular/.NET · Python/Django)",
     org: "PIL · Educación IT",
     period: "2020 – 2021",
   },

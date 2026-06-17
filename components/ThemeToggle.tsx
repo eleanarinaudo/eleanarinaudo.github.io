@@ -34,7 +34,7 @@ export default function ThemeToggle() {
     <button
       onClick={toggle}
       aria-label={dark ? "Switch to light theme" : "Switch to dark theme"}
-      className="inline-flex items-center gap-2 rounded-[2px] border border-lineStrong px-3 py-[7px] text-[10.5px] uppercase tracking-[0.16em] text-inkSoft transition-colors hover:border-ink hover:text-ink"
+      className="inline-flex items-center gap-2 rounded-[3px] border border-lineStrong px-3 py-2.5 text-[10.5px] uppercase tracking-[0.16em] text-inkSoft transition-colors hover:border-ink hover:text-ink"
     >
       {/* Render a stable label until mounted to avoid hydration mismatch. */}
       {mounted && dark ? (

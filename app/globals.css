@@ -11,7 +11,7 @@
   --paper-2: 236 230 218;
   --card: 250 248 243;
   --ink: 27 24 19;
-  --ink-soft: 92 86 76;
+  --ink-soft: 78 72 62; /* darkened to widen the tonal ramp vs ink-faint */
   --ink-faint: 109 103 90; /* darkened for WCAG AA on paper */
   --line: 227 221 208;
   --line-strong: 205 196 178;
@@ -39,9 +39,26 @@ html {
 
 body {
   @apply bg-paper text-ink antialiased;
+  /* Faint washi-paper grain (≈2.5% noise), tiled, theme-agnostic. */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
   transition:
     background-color 0.4s ease,
     color 0.4s ease;
+}
+
+/* One-time staggered hero entrance (delays set inline per element). */
+.hero-rise {
+  animation: hero-rise 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 ::selection {
@@ -82,7 +99,12 @@ body {
   }
   .btn-primary:hover {
     gap: 14px;
-    box-shadow: 0 8px 22px rgb(var(--shu) / 0.3);
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px -8px rgb(0 0 0 / 0.35);
+  }
+  /* On the filled sumi surface, the global shu outline disappears — use paper. */
+  .btn-primary:focus-visible {
+    outline-color: rgb(var(--on-shu));
   }
 
   /* Outlined CTA */
@@ -119,14 +141,15 @@ body {
     color: rgb(var(--ink));
   }
 
-  /* Stack tag (static) */
+  /* Stack tag (static metadata) — borderless + filled, to read as quiet
+     metadata distinct from the interactive bordered .chip. */
   .tag {
     display: inline-flex;
     padding: 4px 10px;
     border-radius: 3px;
     font-size: 11.5px;
-    color: rgb(var(--ink-faint));
-    border: 1px solid rgb(var(--line));
+    color: rgb(var(--ink-soft));
+    background: rgb(var(--paper-2));
   }
 }
 
@@ -135,6 +158,13 @@ body {
   *::before,
   *::after {
     transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
+  }
+  .hero-rise {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
   }
 }

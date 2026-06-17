@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Zen_Kaku_Gothic_New, Zen_Old_Mincho } from "next/font/google";
 import { profile } from "@/lib/data";
 import "./globals.css";
@@ -30,20 +30,57 @@ export const metadata: Metadata = {
     "Eleana Rinaudo",
   ],
   authors: [{ name: profile.name, url: profile.github }],
+  alternates: { canonical: "/" },
   openGraph: {
     title: `${profile.name} — ${profile.role}`,
     description: profile.tagline,
     url: "https://eleanarinaudo.github.io",
     siteName: profile.name,
-    images: [{ url: "/profile.png", width: 600, height: 600, alt: profile.name }],
+    locale: "en_US",
+    images: [
+      { url: "/profile.png", width: 600, height: 600, alt: profile.name, type: "image/png" },
+    ],
     type: "website",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: `${profile.name} — ${profile.role}`,
     description: profile.tagline,
     images: ["/profile.png"],
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f4f1ea" },
+    { media: "(prefers-color-scheme: dark)", color: "#161410" },
+  ],
+};
+
+// schema.org Person — powers name-search rich results / knowledge panel.
+const personLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  jobTitle: profile.role,
+  url: "https://eleanarinaudo.github.io",
+  image: "https://eleanarinaudo.github.io/profile.png",
+  email: `mailto:${profile.email}`,
+  worksFor: { "@type": "Organization", name: "Fabric Data" },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Córdoba",
+    addressCountry: "AR",
+  },
+  knowsAbout: [
+    "LLMs",
+    "Model Context Protocol",
+    "Python",
+    "AWS",
+    "Machine Learning",
+    "Web Scraping",
+  ],
+  sameAs: [profile.github, profile.linkedin],
 };
 
 // Applies the saved theme before first paint to avoid a light→dark flash.
@@ -58,6 +95,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personLd) }}
+        />
       </head>
       <body className="font-sans">{children}</body>
     </html>

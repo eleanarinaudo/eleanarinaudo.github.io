@@ -15,7 +15,7 @@ export default function MobileMenu({ links }: { links: NavLink[] }) {
         aria-label={open ? "Close menu" : "Open menu"}
         aria-expanded={open}
         onClick={() => setOpen((o) => !o)}
-        className="inline-flex h-9 w-9 items-center justify-center rounded-[2px] border border-lineStrong text-inkSoft transition-colors hover:border-ink hover:text-ink"
+        className="inline-flex h-11 w-11 items-center justify-center rounded-[3px] border border-lineStrong text-inkSoft transition-colors hover:border-ink hover:text-ink"
       >
         <svg
           width="16"
@@ -39,7 +39,7 @@ export default function MobileMenu({ links }: { links: NavLink[] }) {
                 <a
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="block py-2 text-sm font-medium tracking-[0.05em] text-inkSoft transition-colors hover:text-ink"
+                  className="block py-3 text-sm font-medium tracking-[0.05em] text-inkSoft transition-colors hover:text-ink"
                 >
                   {l.label}
                 </a>

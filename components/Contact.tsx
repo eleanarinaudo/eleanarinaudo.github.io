@@ -18,8 +18,8 @@ export default function Contact() {
         Let&apos;s build something with <span className="text-shu">data &amp; LLMs.</span>
       </h2>
       <p className="mt-6 max-w-[54ch] text-[15px] leading-[1.7] text-inkSoft">
-        Open to interesting problems in AI/ML, MCP and data engineering. The fastest way to reach me
-        is below.
+        Open to AI/ML, LLM/MCP and data-engineering roles — full-time or contract. Pick whichever
+        channel works for you.
       </p>
 
       <div className="mt-[clamp(36px,5vw,52px)] grid gap-3.5 sm:grid-cols-3">
