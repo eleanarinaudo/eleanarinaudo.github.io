@@ -40,7 +40,13 @@ export const metadata: Metadata = {
     siteName: profile.name,
     locale: "en_US",
     images: [
-      { url: "/profile.png", width: 600, height: 600, alt: profile.name, type: "image/png" },
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: `${profile.name} — ${profile.role}`,
+        type: "image/png",
+      },
     ],
     type: "website",
   },
@@ -48,7 +54,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${profile.name} — ${profile.role}`,
     description: profile.tagline,
-    images: ["/profile.png"],
+    images: ["/og.png"],
   },
 };
 
