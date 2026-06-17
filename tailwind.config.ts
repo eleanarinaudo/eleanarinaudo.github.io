@@ -13,16 +13,16 @@ const config: Config = {
       // Washi-paper palette driven by CSS variables (see globals.css).
       // Light + dark values live there; Tailwind just references the tokens.
       colors: {
-        paper: "var(--paper)",
-        paper2: "var(--paper-2)",
-        card: "var(--card)",
-        ink: "var(--ink)",
-        inkSoft: "var(--ink-soft)",
-        inkFaint: "var(--ink-faint)",
-        line: "var(--line)",
-        lineStrong: "var(--line-strong)",
-        shu: "var(--shu)",
-        onShu: "var(--on-shu)",
+        paper: "rgb(var(--paper) / <alpha-value>)",
+        paper2: "rgb(var(--paper-2) / <alpha-value>)",
+        card: "rgb(var(--card) / <alpha-value>)",
+        ink: "rgb(var(--ink) / <alpha-value>)",
+        inkSoft: "rgb(var(--ink-soft) / <alpha-value>)",
+        inkFaint: "rgb(var(--ink-faint) / <alpha-value>)",
+        line: "rgb(var(--line) / <alpha-value>)",
+        lineStrong: "rgb(var(--line-strong) / <alpha-value>)",
+        shu: "rgb(var(--shu) / <alpha-value>)",
+        onShu: "rgb(var(--on-shu) / <alpha-value>)",
       },
       fontFamily: {
         sans: ["var(--font-zen-kaku)", "system-ui", "sans-serif"],

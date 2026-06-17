@@ -7,10 +7,7 @@ import { ExternalLinkIcon, LockIcon } from "./icons";
 function StatusBadge({ status, primary }: { status: string; primary?: boolean }) {
   if (primary) {
     return (
-      <span
-        className="rounded-full px-2.5 py-1 text-[10.5px] font-semibold uppercase tracking-[0.1em] text-shu"
-        style={{ background: "color-mix(in srgb, var(--shu) 12%, transparent)" }}
-      >
+      <span className="rounded-full bg-shu/[0.12] px-2.5 py-1 text-[10.5px] font-semibold uppercase tracking-[0.1em] text-shu">
         {status}
       </span>
     );

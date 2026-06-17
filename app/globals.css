@@ -2,33 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ===== Washi-paper theme — sumi (charcoal) accent ===== */
+/* ===== Washi-paper theme — sumi (charcoal) accent =====
+   Colors are stored as space-separated RGB channels so Tailwind's opacity
+   modifiers (e.g. bg-paper/85, bg-shu/12) work on every token. */
 :root {
   color-scheme: light;
-  --paper: #f4f1ea;
-  --paper-2: #ece6da;
-  --card: #faf8f3;
-  --ink: #1b1813;
-  --ink-soft: #5c564c;
-  --ink-faint: #9c958a;
-  --line: #e3ddd0;
-  --line-strong: #cdc4b2;
-  --shu: #2a2620; /* sumi — near-ink in light mode */
-  --on-shu: #faf8f3; /* text/icon color on a filled accent surface */
+  --paper: 244 241 234;
+  --paper-2: 236 230 218;
+  --card: 250 248 243;
+  --ink: 27 24 19;
+  --ink-soft: 92 86 76;
+  --ink-faint: 109 103 90; /* darkened for WCAG AA on paper */
+  --line: 227 221 208;
+  --line-strong: 205 196 178;
+  --shu: 42 38 32; /* sumi — near-ink in light mode */
+  --on-shu: 250 248 243; /* text/icon color on a filled accent surface */
 }
 
 [data-theme="dark"] {
   color-scheme: dark;
-  --paper: #161410;
-  --paper-2: #1d1a14;
-  --card: #1c1914;
-  --ink: #efe9dc;
-  --ink-soft: #a8a092;
-  --ink-faint: #6f6a5e;
-  --line: #2a2620;
-  --line-strong: #3a352b;
-  --shu: #cabfae; /* sumi — warm paper tone on dark */
-  --on-shu: #161410;
+  --paper: 22 20 16;
+  --paper-2: 29 26 20;
+  --card: 28 25 20;
+  --ink: 239 233 220;
+  --ink-soft: 168 160 146;
+  --ink-faint: 143 137 123; /* lightened for WCAG AA on dark paper */
+  --line: 42 38 32;
+  --line-strong: 58 53 43;
+  --shu: 202 191 174; /* sumi — warm paper tone on dark */
+  --on-shu: 22 20 16;
 }
 
 html {
@@ -43,12 +45,12 @@ body {
 }
 
 ::selection {
-  background: var(--shu);
-  color: var(--on-shu);
+  background: rgb(var(--shu));
+  color: rgb(var(--on-shu));
 }
 
 :focus-visible {
-  outline: 2px solid var(--shu);
+  outline: 2px solid rgb(var(--shu));
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -57,7 +59,7 @@ body {
   width: 10px;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--line-strong);
+  background: rgb(var(--line-strong));
   border-radius: 100px;
 }
 
@@ -73,14 +75,14 @@ body {
     font-weight: 600;
     letter-spacing: 0.03em;
     text-decoration: none;
-    background: var(--shu);
-    color: var(--on-shu);
-    border: 1px solid var(--shu);
+    background: rgb(var(--shu));
+    color: rgb(var(--on-shu));
+    border: 1px solid rgb(var(--shu));
     transition: all 0.2s ease;
   }
   .btn-primary:hover {
     gap: 14px;
-    box-shadow: 0 8px 22px color-mix(in srgb, var(--shu) 30%, transparent);
+    box-shadow: 0 8px 22px rgb(var(--shu) / 0.3);
   }
 
   /* Outlined CTA */
@@ -94,12 +96,12 @@ body {
     font-weight: 600;
     letter-spacing: 0.03em;
     text-decoration: none;
-    color: var(--ink);
-    border: 1px solid var(--line-strong);
+    color: rgb(var(--ink));
+    border: 1px solid rgb(var(--line-strong));
     transition: all 0.2s ease;
   }
   .btn-ghost:hover {
-    border-color: var(--ink);
+    border-color: rgb(var(--ink));
   }
 
   /* Skill chip (interactive) */
@@ -108,13 +110,13 @@ body {
     padding: 6px 12px;
     border-radius: 3px;
     font-size: 12.5px;
-    color: var(--ink-soft);
-    border: 1px solid var(--line-strong);
+    color: rgb(var(--ink-soft));
+    border: 1px solid rgb(var(--line-strong));
     transition: all 0.2s ease;
   }
   .chip:hover {
-    border-color: var(--ink);
-    color: var(--ink);
+    border-color: rgb(var(--ink));
+    color: rgb(var(--ink));
   }
 
   /* Stack tag (static) */
@@ -123,8 +125,8 @@ body {
     padding: 4px 10px;
     border-radius: 3px;
     font-size: 11.5px;
-    color: var(--ink-faint);
-    border: 1px solid var(--line);
+    color: rgb(var(--ink-faint));
+    border: 1px solid rgb(var(--line));
   }
 }
 

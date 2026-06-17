@@ -33,7 +33,7 @@ export default function Contact() {
               rel={isExternal ? "noopener noreferrer" : undefined}
               className={`group flex items-center gap-4 rounded-md border p-[22px] no-underline transition-all ${
                 filled
-                  ? "border-shu bg-shu text-onShu hover:shadow-[0_10px_26px_color-mix(in_srgb,var(--shu)_36%,transparent)]"
+                  ? "border-shu bg-shu text-onShu hover:shadow-[0_10px_26px_rgb(var(--shu)/0.36)]"
                   : "border-lineStrong bg-card text-ink hover:border-ink hover:shadow-[0_8px_22px_rgba(0,0,0,0.06)]"
               }`}
             >
