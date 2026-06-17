@@ -10,12 +10,6 @@ export default function Footer() {
             © {new Date().getFullYear()} {profile.name}
           </span>
         </div>
-        <a
-          href="#top"
-          className="text-[11px] uppercase tracking-[0.12em] text-inkFaint transition-colors hover:text-ink"
-        >
-          Back to top ↑
-        </a>
       </div>
     </footer>
   );
