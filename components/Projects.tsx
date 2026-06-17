@@ -1,58 +1,89 @@
 import type { Project } from "@/lib/data";
 import { projects } from "@/lib/data";
-import { ExternalLinkIcon, LockIcon } from "./icons";
+import Section from "./Section";
 import SectionHeading from "./SectionHeading";
+import { ExternalLinkIcon, LockIcon } from "./icons";
 
-function CardBody({ p }: { p: Project }) {
+function StatusBadge({ status, primary }: { status: string; primary?: boolean }) {
+  if (primary) {
+    return (
+      <span
+        className="rounded-full px-2.5 py-1 text-[10.5px] font-semibold uppercase tracking-[0.1em] text-shu"
+        style={{ background: "color-mix(in srgb, var(--shu) 12%, transparent)" }}
+      >
+        {status}
+      </span>
+    );
+  }
+  return (
+    <span className="rounded-full bg-paper2 px-2.5 py-1 text-[10.5px] font-semibold uppercase tracking-[0.1em] text-inkSoft">
+      {status}
+    </span>
+  );
+}
+
+function RowBody({ p, num }: { p: Project; num: string }) {
   return (
     <>
-      <div className="mb-3 flex flex-wrap items-center gap-3">
-        <h3 className="font-display text-lg font-bold text-zinc-100">{p.title}</h3>
-        <span className="chip border-accent/20 bg-accent/10 text-accent-soft">{p.status}</span>
-        {p.private && (
-          <span className="inline-flex items-center gap-1 text-xs text-zinc-500">
-            <LockIcon className="h-3.5 w-3.5" /> Private code
-          </span>
-        )}
-        {p.link && (
-          <ExternalLinkIcon className="ml-auto h-4 w-4 text-zinc-500 transition group-hover:text-accent" />
-        )}
+      <span className="shrink-0 font-serif text-[clamp(20px,3vw,30px)] leading-none text-shu">
+        {num}
+      </span>
+      <div className="min-w-0 flex-1 basis-[300px]">
+        <div className="flex flex-wrap items-center gap-3">
+          <h3 className="m-0 text-[clamp(18px,2.2vw,22px)] font-semibold -tracking-[0.01em]">
+            {p.title}
+          </h3>
+          <StatusBadge status={p.status} primary={p.private} />
+          {p.private && (
+            <span className="inline-flex items-center gap-1.5 text-[11px] text-inkFaint">
+              <LockIcon className="h-[11px] w-[11px]" /> Private code
+            </span>
+          )}
+          {p.link && (
+            <ExternalLinkIcon className="ml-auto h-[17px] w-[17px] text-inkFaint transition-colors group-hover:text-shu" />
+          )}
+        </div>
+        <p className="mt-3.5 max-w-[72ch] text-[14.5px] leading-[1.68] text-inkSoft">
+          {p.description}
+        </p>
+        <div className="mt-[18px] flex flex-wrap gap-[7px]">
+          {p.stack.map((t) => (
+            <span key={t} className="tag">
+              {t}
+            </span>
+          ))}
+        </div>
       </div>
-      <p className="mb-4 max-w-3xl text-sm leading-relaxed text-zinc-400">{p.description}</p>
-      <ul className="flex flex-wrap gap-2">
-        {p.stack.map((t) => (
-          <li key={t} className="chip font-mono">
-            {t}
-          </li>
-        ))}
-      </ul>
     </>
   );
 }
 
 export default function Projects() {
+  const rowClass =
+    "flex flex-wrap gap-4 border-b border-line px-0 py-[clamp(28px,4vw,40px)] transition-colors hover:bg-card sm:gap-[clamp(16px,4vw,44px)]";
   return (
-    <section id="work" className="mx-auto max-w-5xl scroll-mt-20 px-6 py-16">
-      <SectionHeading num="04" label="Selected work" />
-      <div className="grid gap-5">
-        {projects.map((p) =>
-          p.link ? (
+    <Section id="work">
+      <SectionHeading num="04" label="Selected work" className="mb-[clamp(20px,3vw,32px)]" />
+      <div className="border-t border-line">
+        {projects.map((p, i) => {
+          const num = String(i + 1).padStart(2, "0");
+          return p.link ? (
             <a
               key={p.title}
               href={p.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="card group block cursor-pointer p-6 sm:p-7"
+              className={`group text-ink no-underline ${rowClass}`}
             >
-              <CardBody p={p} />
+              <RowBody p={p} num={num} />
             </a>
           ) : (
-            <div key={p.title} className="card group block p-6 sm:p-7">
-              <CardBody p={p} />
+            <div key={p.title} className={`group ${rowClass}`}>
+              <RowBody p={p} num={num} />
             </div>
-          ),
-        )}
+          );
+        })}
       </div>
-    </section>
+    </Section>
   );
 }

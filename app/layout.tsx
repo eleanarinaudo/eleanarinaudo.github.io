@@ -1,17 +1,19 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
+import { Zen_Kaku_Gothic_New, Zen_Old_Mincho } from "next/font/google";
 import { profile } from "@/lib/data";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
-const display = Space_Grotesk({
+const zenKaku = Zen_Kaku_Gothic_New({
   subsets: ["latin"],
-  variable: "--font-display",
+  weight: ["300", "400", "500", "700", "900"],
+  variable: "--font-zen-kaku",
   display: "swap",
 });
-const mono = JetBrains_Mono({
+
+const zenMincho = Zen_Old_Mincho({
   subsets: ["latin"],
-  variable: "--font-mono",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-zen-mincho",
   display: "swap",
 });
 
@@ -44,9 +46,19 @@ export const metadata: Metadata = {
   },
 };
 
+// Applies the saved theme before first paint to avoid a light→dark flash.
+const themeInit = `(function(){try{if(localStorage.getItem('theme')==='dark'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();`;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${display.variable} ${mono.variable}`}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${zenKaku.variable} ${zenMincho.variable}`}
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInit }} />
+      </head>
       <body className="font-sans">{children}</body>
     </html>
   );

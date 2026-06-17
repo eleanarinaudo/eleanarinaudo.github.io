@@ -1,25 +1,18 @@
 type Props = {
   num: string;
   label: string;
-  title?: string;
+  className?: string;
 };
 
-/** Editorial numbered section heading: 01 — About */
-export default function SectionHeading({ num, label, title }: Props) {
+/** Editorial numbered section heading: 01 ——— ABOUT */
+export default function SectionHeading({ num, label, className = "" }: Props) {
   return (
-    <div className="mb-8">
-      <div className="flex items-center gap-3">
-        <span className="section-num">{num}</span>
-        <span className="h-px w-8 bg-gradient-to-r from-accent to-transparent" />
-        <span className="font-mono text-xs uppercase tracking-[0.22em] text-zinc-400">
-          {label}
-        </span>
-      </div>
-      {title && (
-        <h2 className="mt-3 font-display text-2xl font-bold tracking-tight text-zinc-100 sm:text-3xl">
-          {title}
-        </h2>
-      )}
+    <div className={`flex items-center gap-[18px] ${className}`}>
+      <span className="font-serif text-sm font-medium tracking-[0.05em] text-shu">{num}</span>
+      <span className="h-px w-7 bg-lineStrong sm:w-14" />
+      <span className="text-[11px] font-semibold uppercase tracking-[0.3em] text-inkFaint">
+        {label}
+      </span>
     </div>
   );
 }

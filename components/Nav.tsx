@@ -1,3 +1,5 @@
+import ThemeToggle from "./ThemeToggle";
+
 const links = [
   { href: "#about", label: "About" },
   { href: "#experience", label: "Experience" },
@@ -8,20 +10,27 @@ const links = [
 
 export default function Nav() {
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/5 bg-ink-950/70 backdrop-blur-md">
-      <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-        <a href="#top" className="font-mono text-sm font-semibold tracking-tight text-zinc-100">
-          ER<span className="text-accent">.</span>
+    <header className="sticky top-0 z-40 border-b border-line bg-paper/85 backdrop-blur-md backdrop-saturate-150 transition-colors">
+      <nav className="mx-auto flex max-w-shell items-center justify-between gap-5 px-6 py-4 sm:px-11">
+        <a href="#top" className="flex items-center gap-2 text-ink no-underline">
+          <span className="h-[9px] w-[9px] rounded-full bg-shu" />
+          <span className="text-sm font-bold tracking-[0.14em]">ER.</span>
         </a>
-        <ul className="hidden gap-7 text-sm text-zinc-400 sm:flex">
-          {links.map((l) => (
-            <li key={l.href}>
-              <a href={l.href} className="transition hover:text-zinc-100">
-                {l.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div className="flex items-center gap-4 sm:gap-7">
+          <ul className="hidden items-center gap-4 sm:flex sm:gap-7">
+            {links.map((l) => (
+              <li key={l.href}>
+                <a
+                  href={l.href}
+                  className="text-[12.5px] font-medium tracking-[0.05em] text-inkSoft transition-colors hover:text-ink"
+                >
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <ThemeToggle />
+        </div>
       </nav>
     </header>
   );

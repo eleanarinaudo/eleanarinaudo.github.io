@@ -2,8 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ===== Washi-paper theme — sumi (charcoal) accent ===== */
 :root {
+  color-scheme: light;
+  --paper: #f4f1ea;
+  --paper-2: #ece6da;
+  --card: #faf8f3;
+  --ink: #1b1813;
+  --ink-soft: #5c564c;
+  --ink-faint: #9c958a;
+  --line: #e3ddd0;
+  --line-strong: #cdc4b2;
+  --shu: #2a2620; /* sumi — near-ink in light mode */
+  --on-shu: #faf8f3; /* text/icon color on a filled accent surface */
+}
+
+[data-theme="dark"] {
   color-scheme: dark;
+  --paper: #161410;
+  --paper-2: #1d1a14;
+  --card: #1c1914;
+  --ink: #efe9dc;
+  --ink-soft: #a8a092;
+  --ink-faint: #6f6a5e;
+  --line: #2a2620;
+  --line-strong: #3a352b;
+  --shu: #cabfae; /* sumi — warm paper tone on dark */
+  --on-shu: #161410;
 }
 
 html {
@@ -11,68 +36,103 @@ html {
 }
 
 body {
-  @apply bg-ink-950 text-zinc-300 antialiased;
-  background-image:
-    linear-gradient(to right, rgba(129, 140, 248, 0.045) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(129, 140, 248, 0.045) 1px, transparent 1px),
-    radial-gradient(48rem 48rem at 82% -8%, rgba(99, 102, 241, 0.1), transparent 60%),
-    radial-gradient(42rem 42rem at 0% 12%, rgba(232, 121, 249, 0.06), transparent 55%);
-  background-size: 64px 64px, 64px 64px, 100% 100%, 100% 100%;
-  background-attachment: fixed;
+  @apply bg-paper text-ink antialiased;
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
+}
+
+::selection {
+  background: var(--shu);
+  color: var(--on-shu);
+}
+
+:focus-visible {
+  outline: 2px solid var(--shu);
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar {
   width: 10px;
 }
 ::-webkit-scrollbar-thumb {
-  @apply rounded-full bg-ink-700;
-}
-
-/* Accessible keyboard focus */
-:focus-visible {
-  outline: 2px solid #818cf8;
-  outline-offset: 3px;
-  border-radius: 6px;
+  background: var(--line-strong);
+  border-radius: 100px;
 }
 
 @layer components {
-  .gradient-text {
-    @apply animate-shimmer bg-clip-text text-transparent;
-    background-image: linear-gradient(110deg, #a5b4fc, #818cf8, #e879f9, #818cf8, #a5b4fc);
-    background-size: 200% auto;
+  /* Filled accent CTA */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 26px;
+    border-radius: 3px;
+    font-size: 13.5px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    background: var(--shu);
+    color: var(--on-shu);
+    border: 1px solid var(--shu);
+    transition: all 0.2s ease;
   }
-  .card {
-    @apply relative rounded-2xl border border-white/5 bg-white/[0.02] transition duration-300 ease-out;
+  .btn-primary:hover {
+    gap: 14px;
+    box-shadow: 0 8px 22px color-mix(in srgb, var(--shu) 30%, transparent);
   }
-  .card:hover {
-    @apply -translate-y-1 border-accent/30 bg-white/[0.04];
-    box-shadow: 0 14px 44px -14px rgba(99, 102, 241, 0.4);
+
+  /* Outlined CTA */
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 15px 24px;
+    border-radius: 3px;
+    font-size: 13.5px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    color: var(--ink);
+    border: 1px solid var(--line-strong);
+    transition: all 0.2s ease;
   }
+  .btn-ghost:hover {
+    border-color: var(--ink);
+  }
+
+  /* Skill chip (interactive) */
   .chip {
-    @apply inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1
-      text-xs font-medium text-zinc-300 transition hover:border-accent/30 hover:text-zinc-100;
+    display: inline-flex;
+    padding: 6px 12px;
+    border-radius: 3px;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    border: 1px solid var(--line-strong);
+    transition: all 0.2s ease;
   }
-  .section-num {
-    @apply font-mono text-sm font-medium text-accent;
+  .chip:hover {
+    border-color: var(--ink);
+    color: var(--ink);
   }
-  .section-label {
-    @apply mb-3 font-mono text-xs uppercase tracking-[0.25em] text-accent;
+
+  /* Stack tag (static) */
+  .tag {
+    display: inline-flex;
+    padding: 4px 10px;
+    border-radius: 3px;
+    font-size: 11.5px;
+    color: var(--ink-faint);
+    border: 1px solid var(--line);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-spin-slow,
-  .animate-glow,
-  .animate-glow-alt,
-  .animate-shimmer,
-  .animate-pulse-dot,
-  .animate-fade-up {
-    animation: none !important;
-  }
-  .gradient-text {
-    background-position: 0 50%;
-  }
-  html {
-    scroll-behavior: auto;
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
