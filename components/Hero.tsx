@@ -21,7 +21,7 @@ export default function Hero() {
             className="hero-rise mb-7 text-[11px] font-medium uppercase tracking-[0.28em] text-inkFaint"
             style={{ animationDelay: "80ms" }}
           >
-            Open to opportunities · {profile.location}
+            Open to remote opportunities · {profile.location}
           </p>
 
           <h1
