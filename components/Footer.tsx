@@ -10,9 +10,12 @@ export default function Footer() {
             © {new Date().getFullYear()} {profile.name}
           </span>
         </div>
-        <span className="text-[11px] uppercase tracking-[0.12em] text-inkFaint">
-          Built with Next.js &amp; Tailwind CSS
-        </span>
+        <a
+          href="#top"
+          className="text-[11px] uppercase tracking-[0.12em] text-inkFaint transition-colors hover:text-ink"
+        >
+          Back to top ↑
+        </a>
       </div>
     </footer>
   );
