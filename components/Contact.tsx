@@ -1,5 +1,6 @@
 import { profile } from "@/lib/data";
 import { GitHubIcon, LinkedInIcon, MailIcon } from "./icons";
+import SectionHeading from "./SectionHeading";
 
 const channels = [
   { label: "GitHub", href: profile.github, Icon: GitHubIcon, handle: "@eleanarinaudo" },
@@ -10,8 +11,8 @@ const channels = [
 export default function Contact() {
   return (
     <section id="contact" className="mx-auto max-w-5xl scroll-mt-20 px-6 py-16">
-      <p className="section-label">Contact</p>
-      <h2 className="mb-2 text-2xl font-bold text-zinc-100 sm:text-3xl">
+      <SectionHeading num="06" label="Contact" />
+      <h2 className="mb-2 font-display text-2xl font-bold text-zinc-100 sm:text-3xl">
         Let&apos;s build something with <span className="gradient-text">data &amp; LLMs</span>.
       </h2>
       <p className="mb-8 max-w-xl text-zinc-400">

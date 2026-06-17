@@ -1,5 +1,6 @@
 import { education, training } from "@/lib/data";
 import type { Study } from "@/lib/data";
+import SectionHeading from "./SectionHeading";
 
 function StudyList({ items }: { items: Study[] }) {
   return (
@@ -20,7 +21,7 @@ function StudyList({ items }: { items: Study[] }) {
 export default function Education() {
   return (
     <section id="education" className="mx-auto max-w-5xl scroll-mt-20 px-6 py-16">
-      <p className="section-label">Education</p>
+      <SectionHeading num="05" label="Education" />
       <div className="grid gap-5 sm:grid-cols-2">
         <div className="card p-6">
           <h3 className="mb-4 font-mono text-sm font-semibold text-zinc-200">Degrees</h3>

@@ -1,14 +1,15 @@
 import { experience } from "@/lib/data";
+import SectionHeading from "./SectionHeading";
 
 export default function Experience() {
   return (
     <section id="experience" className="mx-auto max-w-5xl scroll-mt-20 px-6 py-16">
-      <p className="section-label">Experience</p>
+      <SectionHeading num="02" label="Experience" />
       <div className="space-y-10">
         {experience.map((role) => (
           <div key={role.company + role.title}>
             <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-              <h3 className="text-lg font-semibold text-zinc-100">
+              <h3 className="font-display text-lg font-bold text-zinc-100">
                 {role.title}{" "}
                 <span className="text-accent">· {role.company}</span>
                 {role.note && (

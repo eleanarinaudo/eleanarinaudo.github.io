@@ -1,12 +1,13 @@
 import type { Project } from "@/lib/data";
 import { projects } from "@/lib/data";
 import { ExternalLinkIcon, LockIcon } from "./icons";
+import SectionHeading from "./SectionHeading";
 
 function CardBody({ p }: { p: Project }) {
   return (
     <>
       <div className="mb-3 flex flex-wrap items-center gap-3">
-        <h3 className="text-lg font-semibold text-zinc-100">{p.title}</h3>
+        <h3 className="font-display text-lg font-bold text-zinc-100">{p.title}</h3>
         <span className="chip border-accent/20 bg-accent/10 text-accent-soft">{p.status}</span>
         {p.private && (
           <span className="inline-flex items-center gap-1 text-xs text-zinc-500">
@@ -32,7 +33,7 @@ function CardBody({ p }: { p: Project }) {
 export default function Projects() {
   return (
     <section id="work" className="mx-auto max-w-5xl scroll-mt-20 px-6 py-16">
-      <p className="section-label">Selected work</p>
+      <SectionHeading num="04" label="Selected work" />
       <div className="grid gap-5">
         {projects.map((p) =>
           p.link ? (

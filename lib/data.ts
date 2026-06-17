@@ -9,7 +9,14 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/eleana-rinaudo/",
   resume: "/CV_Eleana_Rinaudo.docx",
   avatar: "/profile.png",
+  status: "AI/ML Engineer @ Fabric Data",
 };
+
+export const stats: { value: string; label: string }[] = [
+  { value: "5+", label: "yrs shipping data products" },
+  { value: "~108", label: "MCP tools built" },
+  { value: "30+", label: "platform scrapers" },
+];
 
 export const about = [
   "AI/ML Engineer who built the full data lifecycle of a media & entertainment data platform — from large-scale web-scraping ingestion, through ML enrichment, to a production LLM access layer (Model Context Protocol).",
